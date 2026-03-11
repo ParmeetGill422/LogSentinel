@@ -1,0 +1,43 @@
+Mar 10 01:23:41 prod-server sshd[12340]: Failed password for invalid user admin from 185.220.101.45 port 56830 ssh2
+Mar 10 01:23:43 prod-server sshd[12341]: Failed password for invalid user admin from 185.220.101.45 port 56831 ssh2
+Mar 10 01:23:45 prod-server sshd[12342]: Failed password for invalid user admin from 185.220.101.45 port 56832 ssh2
+Mar 10 01:23:47 prod-server sshd[12343]: Failed password for invalid user admin from 185.220.101.45 port 56833 ssh2
+Mar 10 01:23:49 prod-server sshd[12344]: Failed password for invalid user admin from 185.220.101.45 port 56834 ssh2
+Mar 10 01:23:51 prod-server sshd[12345]: Failed password for invalid user admin from 185.220.101.45 port 56835 ssh2
+Mar 10 01:23:53 prod-server sshd[12346]: Failed password for invalid user admin from 185.220.101.45 port 56836 ssh2
+Mar 10 02:15:30 prod-server sshd[12350]: Failed password for root from 45.33.32.156 port 43210 ssh2
+Mar 10 02:15:32 prod-server sshd[12351]: Failed password for root from 45.33.32.156 port 43211 ssh2
+Mar 10 02:15:34 prod-server sshd[12352]: Failed password for root from 45.33.32.156 port 43212 ssh2
+Mar 10 02:15:36 prod-server sshd[12353]: Failed password for root from 45.33.32.156 port 43213 ssh2
+Mar 10 02:15:38 prod-server sshd[12354]: Failed password for root from 45.33.32.156 port 43214 ssh2
+Mar 10 02:15:40 prod-server sshd[12355]: Failed password for root from 45.33.32.156 port 43215 ssh2
+Mar 10 03:44:55 prod-server sshd[12360]: Invalid user oracle from 92.118.160.20 port 51230
+Mar 10 03:45:01 prod-server sshd[12361]: Failed password for invalid user oracle from 92.118.160.20 port 51231 ssh2
+Mar 10 03:45:03 prod-server sshd[12362]: Failed password for invalid user oracle from 92.118.160.20 port 51232 ssh2
+Mar 10 03:45:05 prod-server sshd[12363]: Failed password for invalid user oracle from 92.118.160.20 port 51233 ssh2
+Mar 10 04:55:20 prod-server sshd[12370]: Failed password for invalid user postgres from 185.220.101.47 port 44320 ssh2
+Mar 10 04:55:22 prod-server sshd[12371]: Failed password for invalid user postgres from 185.220.101.47 port 44321 ssh2
+Mar 10 04:55:24 prod-server sshd[12372]: Failed password for invalid user postgres from 185.220.101.47 port 44322 ssh2
+Mar 10 04:55:26 prod-server sshd[12373]: Failed password for invalid user postgres from 185.220.101.47 port 44323 ssh2
+Mar 10 04:55:28 prod-server sshd[12374]: Failed password for invalid user postgres from 185.220.101.47 port 44324 ssh2
+Mar 10 04:55:30 prod-server sshd[12375]: Failed password for invalid user postgres from 185.220.101.47 port 44325 ssh2
+Mar 10 08:30:12 prod-server sshd[12400]: Accepted password for john from 10.0.0.5 port 22 ssh2
+Mar 10 09:15:22 prod-server sshd[12401]: Accepted password for alice from 10.0.0.6 port 22 ssh2
+Mar 10 09:48:05 prod-server sshd[12402]: Accepted password for devops from 10.0.0.10 port 22 ssh2
+Mar 10 11:30:33 prod-server sshd[12403]: Failed password for bob from 10.0.0.8 port 22 ssh2
+Mar 10 11:30:45 prod-server sshd[12404]: Accepted password for bob from 10.0.0.8 port 22 ssh2
+Mar 10 14:20:11 prod-server sshd[12410]: Accepted password for alice from 10.0.0.6 port 22 ssh2
+Mar 10 16:05:44 prod-server sshd[12420]: Accepted password for john from 10.0.0.5 port 22 ssh2
+Mar 10 02:58:10 prod-server sshd[12430]: Invalid user ftpuser from 109.234.35.20 port 60012
+Mar 10 02:58:12 prod-server sshd[12431]: Failed password for invalid user ftpuser from 109.234.35.20 port 60012 ssh2
+Mar 10 02:58:14 prod-server sshd[12432]: Invalid user testuser from 109.234.35.20 port 60013
+Mar 10 02:58:16 prod-server sshd[12433]: Failed password for invalid user testuser from 109.234.35.20 port 60013 ssh2
+Mar 10 04:12:01 prod-server sshd[12440]: Failed password for invalid user deploy from 203.0.113.99 port 55100 ssh2
+Mar 10 04:12:03 prod-server sshd[12441]: Failed password for invalid user deploy from 203.0.113.99 port 55101 ssh2
+Mar 10 04:12:05 prod-server sshd[12442]: Failed password for invalid user deploy from 203.0.113.99 port 55102 ssh2
+Mar 10 04:12:07 prod-server sshd[12443]: Failed password for invalid user deploy from 203.0.113.99 port 55103 ssh2
+Mar 10 04:12:09 prod-server sshd[12444]: Failed password for invalid user deploy from 203.0.113.99 port 55104 ssh2
+Mar 10 17:33:22 prod-server sshd[12450]: Accepted password for devops from 10.0.0.10 port 22 ssh2
+Mar 10 18:01:09 prod-server sshd[12451]: Accepted password for john from 10.0.0.5 port 22 ssh2
+Mar 10 22:47:55 prod-server sshd[12460]: Failed password for ubuntu from 198.51.100.77 port 32101 ssh2
+Mar 10 23:01:14 prod-server sshd[12461]: Failed password for ubuntu from 198.51.100.77 port 32102 ssh2

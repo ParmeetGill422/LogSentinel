@@ -1,0 +1,38 @@
+EventID,TimeGenerated,SourceName,ComputerName,UserName,Message
+4625,2026-03-10 01:30:00,Security,WORKSTATION1,administrator,An account failed to log on. Logon Type: 3. Failure Reason: Unknown user name or bad password.
+4625,2026-03-10 01:30:05,Security,WORKSTATION1,administrator,An account failed to log on. Logon Type: 3. Failure Reason: Unknown user name or bad password.
+4625,2026-03-10 01:30:10,Security,WORKSTATION1,administrator,An account failed to log on. Logon Type: 3. Failure Reason: Unknown user name or bad password.
+4625,2026-03-10 01:30:15,Security,WORKSTATION1,administrator,An account failed to log on. Logon Type: 3. Failure Reason: Unknown user name or bad password.
+4625,2026-03-10 01:30:20,Security,WORKSTATION1,administrator,An account failed to log on. Logon Type: 3. Failure Reason: Unknown user name or bad password.
+4625,2026-03-10 01:30:25,Security,WORKSTATION1,administrator,An account failed to log on. Logon Type: 3. Failure Reason: Unknown user name or bad password.
+4625,2026-03-10 01:30:30,Security,WORKSTATION1,administrator,An account failed to log on. Logon Type: 3. Failure Reason: Unknown user name or bad password.
+4624,2026-03-10 08:15:00,Security,WORKSTATION1,jsmith,An account was successfully logged on. Logon Type: 2.
+4624,2026-03-10 08:30:22,Security,FILESERVER1,alice,An account was successfully logged on. Logon Type: 3.
+4624,2026-03-10 09:00:11,Security,WORKSTATION2,bob,An account was successfully logged on. Logon Type: 2.
+4625,2026-03-10 02:10:00,Security,FILESERVER1,guest,An account failed to log on. Logon Type: 3. Failure Reason: Account currently disabled.
+4625,2026-03-10 02:10:05,Security,FILESERVER1,guest,An account failed to log on. Logon Type: 3. Failure Reason: Account currently disabled.
+4625,2026-03-10 02:10:10,Security,FILESERVER1,guest,An account failed to log on. Logon Type: 3. Failure Reason: Account currently disabled.
+4625,2026-03-10 02:10:15,Security,FILESERVER1,guest,An account failed to log on. Logon Type: 3. Failure Reason: Account currently disabled.
+4625,2026-03-10 02:10:20,Security,FILESERVER1,guest,An account failed to log on. Logon Type: 3. Failure Reason: Account currently disabled.
+4648,2026-03-10 09:45:00,Security,WORKSTATION1,jsmith,A logon was attempted using explicit credentials. Target Account: svc-backup.
+4672,2026-03-10 09:45:01,Security,WORKSTATION1,svc-backup,Special privileges assigned to new logon.
+4624,2026-03-10 10:20:33,Security,WORKSTATION3,charlie,An account was successfully logged on. Logon Type: 2.
+4624,2026-03-10 10:45:00,Security,WORKSTATION1,jsmith,An account was successfully logged on. Logon Type: 2.
+4625,2026-03-10 03:15:00,Security,DC01,svc-sql,An account failed to log on. Logon Type: 3. Failure Reason: Wrong password.
+4625,2026-03-10 03:15:05,Security,DC01,svc-sql,An account failed to log on. Logon Type: 3. Failure Reason: Wrong password.
+4625,2026-03-10 03:15:10,Security,DC01,svc-sql,An account failed to log on. Logon Type: 3. Failure Reason: Wrong password.
+4625,2026-03-10 03:15:15,Security,DC01,svc-sql,An account failed to log on. Logon Type: 3. Failure Reason: Wrong password.
+4625,2026-03-10 03:15:20,Security,DC01,svc-sql,An account failed to log on. Logon Type: 3. Failure Reason: Wrong password.
+4625,2026-03-10 03:15:25,Security,DC01,svc-sql,An account failed to log on. Logon Type: 3. Failure Reason: Wrong password.
+4740,2026-03-10 03:15:30,Security,DC01,svc-sql,A user account was locked out.
+4624,2026-03-10 12:00:00,Security,WORKSTATION4,diana,An account was successfully logged on. Logon Type: 2.
+4624,2026-03-10 13:30:44,Security,FILESERVER1,alice,An account was successfully logged on. Logon Type: 3.
+4625,2026-03-10 14:10:00,Security,WORKSTATION2,bob,An account failed to log on. Logon Type: 2. Failure Reason: Wrong password.
+4624,2026-03-10 14:10:35,Security,WORKSTATION2,bob,An account was successfully logged on. Logon Type: 2.
+4720,2026-03-10 15:00:00,Security,DC01,admin,A user account was created. New Account: temp-contractor.
+4624,2026-03-10 15:45:22,Security,WORKSTATION5,eve,An account was successfully logged on. Logon Type: 2.
+4624,2026-03-10 16:20:00,Security,WORKSTATION1,jsmith,An account was successfully logged on. Logon Type: 2.
+4634,2026-03-10 17:00:00,Security,WORKSTATION1,jsmith,An account was logged off. Logon Type: 2.
+4634,2026-03-10 17:30:00,Security,WORKSTATION3,charlie,An account was logged off. Logon Type: 2.
+4624,2026-03-10 04:55:00,Security,WORKSTATION6,unknown_user,An account was successfully logged on. Logon Type: 10.
+4624,2026-03-10 18:10:00,Security,WORKSTATION2,bob,An account was successfully logged on. Logon Type: 2.
