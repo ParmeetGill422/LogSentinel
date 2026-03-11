@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Workflow rules
+
+- **Always commit and push to GitHub after every code change.** Do not leave changes uncommitted.
+
 ## Running the tool
 
 ```bash
