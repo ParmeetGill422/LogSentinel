@@ -86,7 +86,9 @@ Thresholds are module-level constants at the top of `threat_detector.py`:
 
 ### Database
 
-`db_handler.get_connection()` opens a new connection per call (no connection pool). Every function opens, uses, and closes its own connection. `init_database()` reads and executes `schema.sql` from the project root — it **drops and recreates** both tables, so it is destructive on re-run.
+`db_handler.get_connection()` opens a new connection per call (no connection pool) with a `connection_timeout=15`. Every function opens, uses, and closes its own connection. `init_database()` reads and executes `schema.sql` from the project root — it **drops and recreates** both tables, so it is destructive on re-run.
+
+For bulk operations use `insert_log_entries_bulk(entries) -> list[int]` and `insert_threat_events_bulk(threats)` — these open a single connection for all rows and are significantly faster against remote databases.
 
 ### HTML report
 
