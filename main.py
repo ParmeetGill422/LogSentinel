@@ -20,6 +20,10 @@ The menu offers five operations:
 import os
 import sys
 
+# Ensure UTF-8 output on Windows (needed for box-drawing characters in banner)
+if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
+    sys.stdout.reconfigure(encoding="utf-8")
+
 # Load .env before importing any module that calls os.getenv()
 from dotenv import load_dotenv
 load_dotenv()
