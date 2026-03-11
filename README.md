@@ -206,7 +206,3 @@ Running the full pipeline on the included sample logs produces:
 > This project was built using an **AI-assisted development workflow with Claude** (Anthropic). Claude was used to design the overall architecture, generate all source code and templates, and produce documentation — demonstrating how AI tools can accelerate the development of practical cybersecurity software while maintaining code quality, clear comments, and security best practices.
 
 ---
-
-## License
-
-MIT License. See [LICENSE](LICENSE) for details.
