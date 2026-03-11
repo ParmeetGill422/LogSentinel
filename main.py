@@ -58,7 +58,7 @@ _BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SAMPLE_LOGS = {
     "ssh":     os.path.join(_BASE_DIR, "sample_logs", "auth.log"),
     "apache":  os.path.join(_BASE_DIR, "sample_logs", "access.log"),
-    "windows": os.path.join(_BASE_DIR, "real_logs", "security_events.csv"),
+    "windows": os.path.join(_BASE_DIR, "sample_logs", "windows_events.csv"),
 }
 
 # ANSI colour codes for terminal output
