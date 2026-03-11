@@ -1,0 +1,11 @@
+# LogSentinel Dependencies
+# Install with: pip install -r requirements.txt
+
+# MySQL database connector
+mysql-connector-python==8.3.0
+
+# .env file support for credentials
+python-dotenv==1.0.1
+
+# Jinja2 HTML templating for the incident report
+Jinja2==3.1.4
