@@ -2,7 +2,7 @@
 
 **A Log Analysis and Incident Report Automation Tool for Cybersecurity**
 
-LogSentinel is a Python-based cybersecurity tool built to simulate a real-world Security Operations Centre (SOC) workflow. It ingests raw log files from SSH servers, Apache web servers, and Windows Event Logs, then automatically identifies attack patterns such as brute force attempts, off-hours intrusions, and path enumeration. Every parsed event and detected threat is persisted to a MySQL database, and a professionally styled HTML incident report is generated at the click of a button — all through a simple numbered CLI menu. Threat detection logic and report generation were developed with the assistance of Claude (Anthropic's AI), helping accelerate the analysis rules and Jinja2 templating.
+LogSentinel is a Python-based cybersecurity tool built to simulate a real-world Security Operations Centre (SOC) workflow. It ingests raw log files from SSH servers, Apache web servers, and Windows Event Logs, then automatically identifies attack patterns such as brute force attempts, off-hours intrusions, and path enumeration. Every parsed event and detected threat is persisted to a MySQL database, and a professionally styled HTML incident report is generated at the click of a button — all through a simple numbered CLI menu. Threat detection logic and report generation were developed with the assistance of Claude, helping accelerate the analysis rules and Jinja2 templating.
 
 ---
 
