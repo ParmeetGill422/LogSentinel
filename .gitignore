@@ -1,6 +1,9 @@
 # ── Secrets ──────────────────────────────────────
 .env
 
+# ── Real logs (contain personal/system info) ─────
+real_logs/
+
 # ── Generated output ─────────────────────────────
 incident_report.html
 

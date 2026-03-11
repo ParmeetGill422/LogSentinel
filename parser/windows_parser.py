@@ -3,8 +3,14 @@ parser/windows_parser.py
 ========================
 Parses Windows Event Log exports in CSV format.
 
-Expected CSV columns:
+Supports two export formats:
+
+Format A (legacy/wevtutil):
     EventID, TimeGenerated, SourceName, ComputerName, UserName, Message
+
+Format B (Get-WinEvent | Select TimeCreated, Id, LevelDisplayName, Message):
+    TimeCreated, Id, LevelDisplayName, Message
+    Username and IP are extracted from the Message text via regex.
 
 Key Event IDs handled:
     4624 — Successful logon
@@ -22,6 +28,7 @@ CSV exports can be produced via:
 """
 
 import csv
+import re
 from datetime import datetime
 
 
@@ -52,12 +59,40 @@ def _parse_timestamp(raw: str) -> datetime | None:
     Attempt to parse a timestamp string in common Windows event log formats.
     Returns a naive datetime or None if parsing fails.
     """
-    for fmt in ("%Y-%m-%d %H:%M:%S", "%Y-%m-%dT%H:%M:%S", "%m/%d/%Y %H:%M:%S"):
+    for fmt in (
+        "%Y-%m-%d %H:%M:%S",
+        "%Y-%m-%dT%H:%M:%S",
+        "%m/%d/%Y %H:%M:%S",
+        "%m/%d/%Y %I:%M:%S %p",   # e.g. 3/11/2026 11:01:33 AM
+    ):
         try:
             return datetime.strptime(raw.strip(), fmt)
         except ValueError:
             continue
     return None
+
+
+def _extract_field(message: str, label: str) -> str | None:
+    """Extract a labelled field value from a Windows event message block."""
+    match = re.search(rf"{re.escape(label)}\s+([^\n\r]+)", message)
+    if match:
+        value = match.group(1).strip()
+        return value if value not in ("-", "") else None
+    return None
+
+
+def _extract_new_logon_user(message: str) -> str | None:
+    """
+    Extract 'Account Name' from the 'New Logon' section of a 4624/4648 message.
+    Falls back to the first Account Name found.
+    """
+    new_logon_match = re.search(
+        r"New Logon:.*?Account Name:\s+([^\n\r]+)", message, re.DOTALL
+    )
+    if new_logon_match:
+        value = new_logon_match.group(1).strip()
+        return value if value not in ("-", "") else None
+    return _extract_field(message, "Account Name:")
 
 
 # ---------------------------------------------------------------------------
@@ -81,13 +116,32 @@ def parse_windows_log(filepath: str) -> list:
 
     with open(filepath, "r", errors="replace", newline="") as fh:
         reader = csv.DictReader(fh)
+        fieldnames = reader.fieldnames or []
+
+        # Detect format: Format B uses 'Id' and 'TimeCreated' (Get-WinEvent export)
+        format_b = "Id" in fieldnames and "TimeCreated" in fieldnames
 
         for row in reader:
-            event_id  = row.get("EventID", "").strip()
-            time_raw  = row.get("TimeGenerated", "").strip()
-            username  = row.get("UserName", "").strip() or None
-            computer  = row.get("ComputerName", "").strip()
-            message   = row.get("Message", "").strip()
+            if format_b:
+                event_id = row.get("Id", "").strip()
+                time_raw = row.get("TimeCreated", "").strip()
+                message  = row.get("Message", "").strip()
+
+                # Extract username and IP from message text
+                if event_id in ("4624", "4648"):
+                    username = _extract_new_logon_user(message)
+                else:
+                    username = _extract_field(message, "Account Name:")
+
+                ip_address = _extract_field(message, "Source Network Address:")
+                computer   = _extract_field(message, "Workstation Name:") or ""
+            else:
+                event_id  = row.get("EventID", "").strip()
+                time_raw  = row.get("TimeGenerated", "").strip()
+                username  = row.get("UserName", "").strip() or None
+                computer  = row.get("ComputerName", "").strip()
+                message   = row.get("Message", "").strip()
+                ip_address = None
 
             timestamp = _parse_timestamp(time_raw)
 
@@ -102,7 +156,7 @@ def parse_windows_log(filepath: str) -> list:
             else:
                 status = "INFO"
 
-            # Build a concise raw_line since the original CSV row isn't a log line
+            # Build a concise raw_line
             raw_line = (
                 f"EventID={event_id} | Computer={computer} | "
                 f"User={username} | {message[:100]}"
@@ -112,7 +166,7 @@ def parse_windows_log(filepath: str) -> list:
                 "source_file": filepath,
                 "log_type": "WINDOWS",
                 "timestamp": timestamp,
-                "ip_address": None,   # Windows event logs don't always include IP
+                "ip_address": ip_address,
                 "user": username,
                 "action": action,
                 "status": status,
