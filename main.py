@@ -37,7 +37,9 @@ from detector.threat_detector import detect_threats
 from database.db_handler import (
     init_database,
     insert_log_entry,
+    insert_log_entries_bulk,
     insert_threat_event,
+    insert_threat_events_bulk,
     get_all_threats,
     get_all_log_entries,
     get_summary_stats,
@@ -160,11 +162,10 @@ def run_parsers() -> list:
     else:
         _warn(f"Windows log not found: {SAMPLE_LOGS['windows']}")
 
-    # Store every entry and capture the auto-generated DB id
+    # Bulk insert all entries in one connection and capture generated IDs
     _info(f"Storing {len(all_entries)} entries to database ...")
-    for entry in all_entries:
-        db_id = insert_log_entry(entry)
-        # Attach the DB id so threat_detector can link threats to their origin
+    ids = insert_log_entries_bulk(all_entries)
+    for entry, db_id in zip(all_entries, ids):
         entry["db_id"] = db_id
 
     _ok("All log entries stored")
@@ -190,8 +191,7 @@ def run_detection(entries: list) -> list:
     )
 
     _info("Storing threat events to database ...")
-    for threat in threats:
-        insert_threat_event(threat)
+    insert_threat_events_bulk(threats)
     _ok("Threats stored")
 
     return threats

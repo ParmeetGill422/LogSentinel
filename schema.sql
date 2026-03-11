@@ -37,7 +37,7 @@ CREATE TABLE log_entries (
 
 -- -------------------------------------------------------
 -- Table: threat_events
--- One row per detected threat; may reference a log_entry
+-- One row per detected threat, may reference a log_entry
 -- -------------------------------------------------------
 CREATE TABLE threat_events (
     id            INT AUTO_INCREMENT PRIMARY KEY,

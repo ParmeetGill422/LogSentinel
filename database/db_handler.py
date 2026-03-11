@@ -37,8 +37,8 @@ def get_connection():
         user=os.getenv("DB_USER", "root"),
         password=os.getenv("DB_PASSWORD", ""),
         database=os.getenv("DB_NAME", "logsentinel"),
-        # Automatically reconnect if the server closes the connection
         autocommit=False,
+        connection_timeout=15,
     )
 
 
@@ -120,6 +120,41 @@ def insert_log_entry(entry: dict) -> int:
     return new_id
 
 
+def insert_log_entries_bulk(entries: list) -> list:
+    """
+    Insert multiple log entries in a single connection and return their db IDs
+    in the same order as the input list.
+    """
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    sql = """
+        INSERT INTO log_entries
+            (source_file, log_type, timestamp, ip_address, user, action, status, raw_line)
+        VALUES
+            (%s, %s, %s, %s, %s, %s, %s, %s)
+    """
+    ids = []
+    for entry in entries:
+        values = (
+            entry.get("source_file"),
+            entry.get("log_type"),
+            entry.get("timestamp"),
+            entry.get("ip_address"),
+            entry.get("user"),
+            entry.get("action"),
+            entry.get("status"),
+            entry.get("raw_line"),
+        )
+        cursor.execute(sql, values)
+        ids.append(cursor.lastrowid)
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return ids
+
+
 def insert_threat_event(threat: dict):
     """
     Insert a detected threat event into the threat_events table.
@@ -149,6 +184,38 @@ def insert_threat_event(threat: dict):
     cursor.execute(sql, values)
     conn.commit()
 
+    cursor.close()
+    conn.close()
+
+
+def insert_threat_events_bulk(threats: list):
+    """
+    Insert multiple threat events in a single connection.
+    """
+    if not threats:
+        return
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    sql = """
+        INSERT INTO threat_events
+            (log_entry_id, threat_type, severity, description, detected_at)
+        VALUES
+            (%s, %s, %s, %s, %s)
+    """
+    now = datetime.now()
+    values = [
+        (
+            t.get("log_entry_id"),
+            t.get("threat_type"),
+            t.get("severity"),
+            t.get("description"),
+            t.get("detected_at", now),
+        )
+        for t in threats
+    ]
+    cursor.executemany(sql, values)
+    conn.commit()
     cursor.close()
     conn.close()
 
